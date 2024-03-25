@@ -58,6 +58,7 @@ const GossipMessageWithEndpoint = struct { from_endpoint: EndPoint, message: Gos
 pub const GOSSIP_PULL_TIMEOUT_MS: u64 = 15000;
 pub const GOSSIP_PUSH_MSG_TIMEOUT_MS: u64 = 30000;
 pub const GOSSIP_PRUNE_MSG_TIMEOUT_MS: u64 = 500;
+pub const GOSSIP_MAX_TRAFFIC: usize = 128_000_000 / PACKET_DATA_SIZE;
 
 pub const FAILED_INSERTS_RETENTION_MS: u64 = 20_000;
 
@@ -104,6 +105,7 @@ pub const GossipStats = struct {
     gossip_packets_received: StatU64 = .{},
     gossip_packets_verified: StatU64 = .{},
     gossip_packets_processed: StatU64 = .{},
+    gossip_packets_excess_dropped: StatU64 = .{},
 
     ping_messages_recv: StatU64 = .{},
     pong_messages_recv: StatU64 = .{},
@@ -585,7 +587,14 @@ pub const GossipService = struct {
 
             msg_count += messages.len;
 
-            for (messages) |*message| {
+            var messages_start_index: usize = 0;
+            const excess_count = messages.len -| GOSSIP_MAX_TRAFFIC;
+            if (excess_count > 0) {
+                messages_start_index = excess_count;
+                self.stats.gossip_packets_excess_dropped.add(excess_count);
+            }
+
+            for (messages[messages_start_index..]) |*message| {
                 var from_endpoint: EndPoint = message.from_endpoint;
 
                 switch (message.message) {
