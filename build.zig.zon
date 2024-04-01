@@ -1,26 +1,27 @@
 .{
     .name = "sig",
     .version = "0.1.1",
+    .paths = .{""},
     .dependencies = .{
         .@"base58-zig" = .{
             .url = "https://github.com/ultd/base58-zig/archive/fe23d156211edbfcede019970d1619184aadb83b.tar.gz",
             .hash = "1220227d746ee3f156059a22b0044c6d8ad062a7cfb15b060cc2e7cbae4d0631f34e",
         },
         .@"zig-network" = .{
-            .url = "https://github.com/MasterQ32/zig-network/archive/02ffa0fc310ff0746f06c9bfb73b008ce4fca200.tar.gz",
-            .hash = "1220fe0d4ca564aa15f3fd7f9f84ba04e031bb70c3a1432257e0d35c74b183550c24",
+            .url = "https://github.com/MasterQ32/zig-network/archive/2caffd712f57f29abb5e41a453cd1c2129517b05.tar.gz",
+            .hash = "122095b1af33a2fbe87af9365516e6c2d21f9f5a6725b539e03bcc6ed8df3c012f39",
         },
         .@"zig-cli" = .{
-            .url = "https://github.com/sam701/zig-cli/archive/ea92821a797bdefb5df41ce602f8c7f387bcfb93.tar.gz",
-            .hash = "122044525df0d1896556da08c5ed50b456a672a52ab86a65834bb1e27d3ae7a847f2",
+            .url = "https://github.com/sam701/zig-cli/archive/beff935fe77a0ed794e8727d48e7780485abb880.tar.gz",
+            .hash = "122092c8a98897c6e0946f39930ce7b48162bd62400834104c95c871f53887377aa7",
         },
         .getty = .{
-            .url = "https://github.com/getty-zig/getty/archive/5b0e750d92ee4ef8e46ad743bb8ced63723acd00.tar.gz",
-            .hash = "12209398657d260abcd6dae946d8da4cd3057b8c7990608476a9f8011aae570d2ebb",
+            .url = "https://github.com/getty-zig/getty/archive/805c4be6eacb988c968911a1cdfd585a8f54ae00.tar.gz",
+            .hash = "1220a5465b323d39df3cdfdc2a77d086d5079d142de48044da1b1feac87531fd6f1c",
         },
         .httpz = .{
-            .url = "https://github.com/karlseguin/http.zig/archive/7a751549a751d9b45952037abdb127b3225b2ac1.tar.gz",
-            .hash = "122004f74adf46001fe9129d8cec54bd4a98895ce89f0897790e13b60fa99e527b99",
+            .url = "https://github.com/karlseguin/http.zig/archive/2ecf5faf2342883b5156dbde5c25bb58769f3758.tar.gz",
+            .hash = "1220124a650d0f8e5c428aab7b7f36b0e4b30790f31ef4270b0a7325a9c5555df39c",
         },
         .zigdig = .{
             .url = "https://github.com/lun-4/zigdig/archive/2ec407ec3c7f347e747717977958e9ba339eb82f.tar.gz",

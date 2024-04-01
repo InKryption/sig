@@ -37,8 +37,8 @@ pub fn build(b: *std.Build) void {
 
     // expose Sig as a module
     _ = b.addModule(package_name, .{
-        .source_file = .{ .path = package_path },
-        .dependencies = &.{
+        .root_source_file = .{ .path = package_path },
+        .imports = &.{
             .{
                 .name = "zig-network",
                 .module = zig_network_module,
@@ -66,12 +66,12 @@ pub fn build(b: *std.Build) void {
         },
     });
 
-    lib.addModule("base58-zig", base58_module);
-    lib.addModule("zig-network", zig_network_module);
-    lib.addModule("zig-cli", zig_cli_module);
-    lib.addModule("getty", getty_mod);
-    lib.addModule("httpz", httpz_mod);
-    lib.addModule("zigdig", zigdig_mod);
+    // lib.addModule("base58-zig", base58_module);
+    // lib.addModule("zig-network", zig_network_module);
+    // lib.addModule("zig-cli", zig_cli_module);
+    // lib.addModule("getty", getty_mod);
+    // lib.addModule("httpz", httpz_mod);
+    // lib.addModule("zigdig", zigdig_mod);
 
     // This declares intent for the library to be installed into the standard
     // location when the user invokes the "install" step (the default step when
@@ -85,12 +85,12 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
         .filter = if (b.args) |args| args[0] else null, // filter tests like so: zig build test -- "<FILTER>"
     });
-    tests.addModule("zig-network", zig_network_module);
-    tests.addModule("base58-zig", base58_module);
-    tests.addModule("zig-cli", zig_cli_module);
-    tests.addModule("getty", getty_mod);
-    tests.addModule("httpz", httpz_mod);
-    tests.addModule("zigdig", zigdig_mod);
+    // tests.addModule("zig-network", zig_network_module);
+    // tests.addModule("base58-zig", base58_module);
+    // tests.addModule("zig-cli", zig_cli_module);
+    // tests.addModule("getty", getty_mod);
+    // tests.addModule("httpz", httpz_mod);
+    // tests.addModule("zigdig", zigdig_mod);
 
     const run_tests = b.addRunArtifact(tests);
     const test_step = b.step("test", "Run library tests");
@@ -105,12 +105,12 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    exe.addModule("base58-zig", base58_module);
-    exe.addModule("zig-network", zig_network_module);
-    exe.addModule("zig-cli", zig_cli_module);
-    exe.addModule("getty", getty_mod);
-    exe.addModule("httpz", httpz_mod);
-    exe.addModule("zigdig", zigdig_mod);
+    // exe.addModule("base58-zig", base58_module);
+    // exe.addModule("zig-network", zig_network_module);
+    // exe.addModule("zig-cli", zig_cli_module);
+    // exe.addModule("getty", getty_mod);
+    // exe.addModule("httpz", httpz_mod);
+    // exe.addModule("zigdig", zigdig_mod);
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
@@ -148,14 +148,14 @@ pub fn build(b: *std.Build) void {
         .root_source_file = .{ .path = "src/gossip/fuzz.zig" },
         .target = target,
         .optimize = optimize,
-        .main_pkg_path = .{ .path = "src" },
+        // .main_pkg_path = .{ .path = "src" },
     });
-    fuzz_exe.addModule("base58-zig", base58_module);
-    fuzz_exe.addModule("zig-network", zig_network_module);
-    fuzz_exe.addModule("zig-cli", zig_cli_module);
-    fuzz_exe.addModule("getty", getty_mod);
-    fuzz_exe.addModule("httpz", httpz_mod);
-    fuzz_exe.addModule("zigdig", zigdig_mod);
+    // fuzz_exe.addModule("base58-zig", base58_module);
+    // fuzz_exe.addModule("zig-network", zig_network_module);
+    // fuzz_exe.addModule("zig-cli", zig_cli_module);
+    // fuzz_exe.addModule("getty", getty_mod);
+    // fuzz_exe.addModule("httpz", httpz_mod);
+    // fuzz_exe.addModule("zigdig", zigdig_mod);
 
     b.installArtifact(fuzz_exe);
     const fuzz_cmd = b.addRunArtifact(fuzz_exe);
@@ -172,14 +172,14 @@ pub fn build(b: *std.Build) void {
         // TODO: make it work
         // .optimize = std.builtin.Mode.ReleaseSafe, // to get decent results - but things get optimized away
         .optimize = optimize,
-        .main_pkg_path = .{ .path = "src" },
+        // .main_pkg_path = .{ .path = "src" },
     });
-    benchmark_exe.addModule("base58-zig", base58_module);
-    benchmark_exe.addModule("zig-network", zig_network_module);
-    benchmark_exe.addModule("zig-cli", zig_cli_module);
-    benchmark_exe.addModule("getty", getty_mod);
-    benchmark_exe.addModule("httpz", httpz_mod);
-    benchmark_exe.addModule("zigdig", zigdig_mod);
+    // benchmark_exe.addModule("base58-zig", base58_module);
+    // benchmark_exe.addModule("zig-network", zig_network_module);
+    // benchmark_exe.addModule("zig-cli", zig_cli_module);
+    // benchmark_exe.addModule("getty", getty_mod);
+    // benchmark_exe.addModule("httpz", httpz_mod);
+    // benchmark_exe.addModule("zigdig", zigdig_mod);
 
     b.installArtifact(benchmark_exe);
     const benchmark_cmd = b.addRunArtifact(benchmark_exe);
