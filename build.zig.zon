@@ -4,8 +4,8 @@
     .paths = .{""},
     .dependencies = .{
         .@"base58-zig" = .{
-            .url = "https://github.com/ultd/base58-zig/archive/fe23d156211edbfcede019970d1619184aadb83b.tar.gz",
-            .hash = "1220227d746ee3f156059a22b0044c6d8ad062a7cfb15b060cc2e7cbae4d0631f34e",
+            .url = "https://github.com/dnut/base58-zig/archive/99ebcc0c80cca94278f706c23e28c0b49bdcd176.tar.gz",
+            .hash = "1220950d830474f27d35695b535b357f0a101dec4bf99a0e65068d154b59a277bad8",
         },
         .@"zig-network" = .{
             .url = "https://github.com/MasterQ32/zig-network/archive/2caffd712f57f29abb5e41a453cd1c2129517b05.tar.gz",
@@ -24,8 +24,8 @@
             .hash = "1220124a650d0f8e5c428aab7b7f36b0e4b30790f31ef4270b0a7325a9c5555df39c",
         },
         .zigdig = .{
-            .url = "https://github.com/lun-4/zigdig/archive/2ec407ec3c7f347e747717977958e9ba339eb82f.tar.gz",
-            .hash = "1220dfdb3089dfe9a4e4bc1226fcff08d91d0c0853f287d98d8b81270da251790331",
+            .url = "https://github.com/dnut/zigdig/archive/cfb8c055d66dc2afcb6a1c6d4f1bf4fefb6e5479.tar.gz",
+            .hash = "122079a1a1b7f0b4419814c4e41f412c4829e85f09dd459327d814508f29f22678fb",
         },
     },
 }
